@@ -1,0 +1,11 @@
+{
+  "target": "note.synology.com",
+  "api_key": "AIzaSyBXG6lKBSQxQFR48lJ2_v9pzS7MFXu5XNU",
+  "severity": "Critical",
+  "cvss": "9.1",
+  "financial_impact": {
+    "web_services": 5000,
+    "cloud_infrastructure": 10000
+  },
+  "abuse_vectors": ["Quota Drain", "Reconnaissance", "Cross-Origin Abuse"]
+}

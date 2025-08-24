@@ -1,162 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>🚨 Synology API Key Vulnerability PoC</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synology API Key Disclosure — Md. Azmol Haque Rony</title>
+  <meta name="description" content="Live PoC demonstrating unrestricted Google Maps API key abuse in Synology asset. Financial impact, reconnaissance, and unrestricted access.">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
       background: #f9f9f9;
-      padding: 20px;
       color: #333;
-      line-height: 1.6;
     }
-    h1, h2, h3 {
-      color: #c62828;
-      margin-bottom: 10px;
-    }
-    .section {
-      margin-bottom: 40px;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-    .impact-box, .highlight {
-      padding: 12px;
-      border-left: 5px solid;
-      margin-top: 10px;
-      border-radius: 4px;
-    }
-    .impact-box {
-      background: #e3f2fd;
-      border-color: #2196f3;
-    }
-    .highlight {
-      background: #fff3cd;
-      border-color: #ffc107;
-    }
-    .map-container {
-      height: 400px;
-      width: 100%;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    button {
-      padding: 10px 16px;
+    header {
       background: #c62828;
       color: white;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    button:hover {
-      background: #b71c1c;
-    }
-    #counter, #cost {
-      font-weight: bold;
-      color: #d32f2f;
-    }
-    footer {
-      font-size: 0.9em;
-      color: #777;
-      margin-top: 60px;
+      padding: 20px;
       text-align: center;
     }
-    img {
-      max-width: 100%;
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .hero {
+      background: #fff8e1;
+      border-left: 6px solid #ff9800;
+      padding: 20px;
       border-radius: 8px;
+      margin-bottom: 40px;
+    }
+    .highlight {
+      background: #e3f2fd;
+      padding: 10px;
+      border-left: 5px solid #2196f3;
+      border-radius: 4px;
       margin-top: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    nav {
-      margin-bottom: 30px;
-      background: #fff;
-      padding: 10px 20px;
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    .keybox {
+      background: #fff3cd;
+      padding: 10px;
+      border-left: 5px solid #ffc107;
+      border-radius: 4px;
+      margin-top: 15px;
+      font-family: monospace;
     }
-    nav a {
-      margin-right: 15px;
-      text-decoration: none;
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
       color: #c62828;
-      font-weight: bold;
     }
-    nav a:hover {
-      text-decoration: underline;
+    h3 {
+      color: #1976d2;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+    .code {
+      background: #eee;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: monospace;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>🚨 Multi-Vector Vulnerability Disclosure</h1>
+    <p>Unrestricted Google Maps API Key in Synology Asset</p>
+  </header>
 
-  <h1>🚨 Multi-Vector Vulnerability Disclosure</h1>
+  <div class="container">
+    <div class="hero">
+      <p>This live PoC demonstrates how a leaked Google Places API key can be abused for:</p>
+      <ul>
+        <li>💸 <strong>Financial loss</strong> via quota drain</li>
+        <li>🕵️ <strong>Reconnaissance</strong> of infrastructure</li>
+        <li>🌍 <strong>Unrestricted third-party access</strong></li>
+      </ul>
 
-  <nav>
-    <a href="#key">🔑 Exposed Key</a>
-    <a href="#scenario1">💸 Financial Abuse</a>
-    <a href="#scenario2">🌍 Unrestricted Access</a>
-    <a href="#scenario3">🕵️ Reconnaissance</a>
-  </nav>
+      <div class="highlight">
+        <strong>Severity:</strong> Critical (CVSS v3.1: 9.1)<br>
+        <strong>Categories Affected:</strong> Web Services ($5,000) + C2 Cloud Infrastructure ($10,000)
+      </div>
 
-  <div class="section">
-    <h2>Unrestricted Google Maps API Key in Synology Asset</h2>
-    <p>This live PoC demonstrates how a leaked Google Places API key can be abused for financial loss, reconnaissance, and infrastructure mapping — justifying escalation to <strong>Critical severity</strong>.</p>
-    <div class="impact-box">
-      <strong>Severity:</strong> Critical (CVSS v3.1: 9.1)<br>
-      <strong>Categories Affected:</strong> Web Services ($5,000) + C2 Cloud Infrastructure ($10,000)
+      <div class="keybox">
+        <strong>Exposed Key:</strong> AIzaSyBXG6lKBSQxQFR48lJ2_v9pzS7MFXu5XNU<br>
+        <strong>Source:</strong> <span class="code">notestation_gmap.js</span> on <span class="code">note.synology.com</span><br>
+        <strong>Status:</strong> Valid for Places API, unrestricted by domain
+      </div>
+
+      <p style="margin-top:20px; font-size:0.9em; color:#555;">
+        ⚠️ <strong>Responsible Disclosure Only</strong> — No data exfiltrated. All locations are simulated.<br>
+        <strong>Submitted by:</strong> Md. Azmol Haque Rony — Ethical Hacker & Bug Bounty Researcher<br>
+        <strong>Timestamp:</strong> August 24, 2025 — Bogura, Bangladesh
+      </p>
     </div>
-  </div>
 
-  <div class="section" id="key">
-    <h2>🔑 The Exposed Key</h2>
-    <div class="highlight">
-      <strong>Source:</strong> <code>notestation_gmap.js</code> on <code>note.synology.com</code><br>
-      <strong>Key:</strong> <code>AIzaSyBXG6lKBSQxQFR48lJ2_v9pzS7MFXu5XNU</code><br>
-      <strong>Status:</strong> Valid for Places API, unrestricted by domain
-    </div>
-  </div>
+    <section>
+      <h2>💸 Scenario 1: Financial Abuse Simulation</h2>
+      <p>Each Places API request costs ~$0.005. Attackers can automate abuse to drain Synology’s quota and incur real-world billing damage.</p>
+      <p><strong>Start Simulation</strong></p>
+      <p>Requests Sent: <span class="code">0 / 10,000</span><br>
+         Estimated Cost: <span class="code">$0.00</span><br>
+         At scale: <span class="code">1M requests ≈ $5,000</span></p>
+    </section>
 
-  <div class="section" id="scenario1">
-    <h2>💸 Scenario 1: Financial Abuse Simulation</h2>
-    <p>Each Places API request costs ~$0.005. Attackers can automate abuse to drain Synology’s quota and incur real-world billing damage.</p>
-    <button onclick="simulateAbuse()">Start Simulation</button>
-    <div class="highlight">
-      Requests Sent: <span id="counter">0</span> / 10,000<br>
-      Estimated Cost: $<span id="cost">0.00</span><br>
-      <em>At scale: 1M requests ≈ $5,000</em>
-    </div>
-  </div>
+    <section>
+      <h2>🌍 Scenario 2: Unrestricted Access</h2>
+      <p>This confirms the key is usable from any third-party domain. The map below is rendered using Synology’s key from an external origin.</p>
+      <p><strong>Live Map of San Francisco</strong></p>
+      <!-- Embed your live map iframe or screenshot here -->
+    </section>
 
-  <div class="section" id="scenario2">
-    <h2>🌍 Scenario 2: Unrestricted Access</h2>
-    <p>This confirms the key is usable from any third-party domain. The map below is rendered using Synology’s key from an external origin.</p>
-    <h3>Live Map of San Francisco</h3>
-    <div id="map" class="map-container"></div>
-  </div>
-
-  <div class="section" id="scenario3">
-    <h2>🕵️ Scenario 3: Reconnaissance via Places API</h2>
-    <p>Using the Places API, attackers can enumerate sensitive infrastructure. Below is a real photo preview from a Dhaka location using Synology’s key.</p>
-    <h3>Live Places Photo (Dhaka)</h3>
-    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATKogpcKuj_DKFQDbvAyrMxRS-_gn34p94n2mEG8RM-YNkvrIbqSRfVsJjSll-L54z8FT5-SFdi7DMwesoRHQ3xRZkzBzOoXeAy5RmOFhCzo0ZmOn6HXlFMSuHYdmPUOwfTunTv3bFh8NY1uS8AVn2xoBsPziFoLKUiY6A-CWJEohQ-hxoeQcEeE_jMcEqltyIIkE9Z1fKSNXSDgFuBDPnrgUkBrNW1hGvwnnVp8rSgrqCSm5beQ7ch1mFXW90hLjR3cRKF-jv2scgGr3gNMLar_8Kt_LWwDlqEd5VoK9ttt-6qlHONXE-sxqOnjnaUocpEuKFGIlRkQNYQ3ZGwKHdEphOF8aSE8MaoZVMZFcO6E14KZxuZynZOCUFJfs96PqqZRatvUbYOf-u01_eS1vt_PMvqCknQs8R5pSM6u_fkQOMgGoR-U0FjdIdSDwZ3ksZpmqUQs2j8276bx3i_a8_KnJzFE5IJTh25gji-Pw8y8zjLlxoZajsE3xUH3cMhwHniHUP-PW0D5khKYqShksi5kPFoOQlIjzYKYXrDWaXNo8nZ5eyBKtAtQX736gu_1OSM4gRvDQ-0R&key=AIzaSyBXG6lKBSQxQFR48lJ2_v9pzS7MFXu5XNU" alt="Places Photo">
+    <section>
+      <h2>🕵️ Scenario 3: Reconnaissance via Places API</h2>
+      <p>Using the Places API, attackers can enumerate sensitive infrastructure. Below is a real photo preview from a Dhaka location using Synology’s key.</p>
+      <p><strong>Live Places Photo (Dhaka)</strong></p>
+      <!-- Embed your Places photo iframe or image here -->
+    </section>
   </div>
 
   <footer>
-    ⚠️ Responsible Disclosure Only — No data exfiltrated. All locations are simulated.<br>
-    Submitted by: <strong>Md. Azmol Haque Rony</strong> — Ethical Hacker & Bug Bounty Researcher<br>
-    Timestamp: August 24, 2025 — Bogura, Bangladesh
+    &copy; 2025 Md. Azmol Haque Rony — Ethical Disclosure Portfolio
   </footer>
-
-  <script>
-    let counter = 0;
-    function simulateAbuse() {
-      const interval = setInterval(() => {
-        counter += 100;
-        document.getElementById("counter").textContent = counter;
-        document.getElementById("cost").textContent = (counter * 0.005).toFixed(2);
-        if (counter >= 10000) clearInterval(interval);
-      }, 50);
+</body>
+</html>

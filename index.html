@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🚨 Synology API Key Abuse — Live PoC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #f9f9f9; color: #333; }
+    h1, h2 { color: #d62828; }
+    code { background: #eee; padding: 2px 4px; border-radius: 4px; }
+    section { margin-bottom: 2rem; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    footer { font-size: 0.9em; color: #666; margin-top: 3rem; }
+    button { padding: 0.5rem 1rem; background: #d62828; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>🚨 Multi-Vector Vulnerability Disclosure</h1>
+  <p><strong>Asset:</strong> Synology Web Services & C2 Cloud Infrastructure</p>
+  <p><strong>Severity:</strong> Critical (CVSS v3.1: 9.1)</p>
+  <p><strong>Categories Affected:</strong> Web Services ($5,000) + C2 Cloud Infrastructure ($10,000)</p>
+
+  <section>
+    <h2>🔑 The Exposed Key</h2>
+    <p><strong>Source:</strong> <code>notestation_gmap.js</code> on <code>note.synology.com</code></p>
+    <p><strong>Key:</strong> <code>AIzaSyBXG6lKBSQxQFR48lJ2_v9pzS7MFXu5XNU</code></p>
+    <p><strong>Status:</strong> Valid for Places API, unrestricted by domain</p>
+  </section>
+
+  <section>
+    <h2>💸 Scenario 1: Financial Abuse Simulation</h2>
+    <p>Each Places API request costs ~$0.005. Attackers can automate abuse to drain Synology’s quota and incur real-world billing damage.</p>
+    <button onclick="simulateRequests()">Start Simulation</button>
+    <p id="counter">Requests Sent: 0 / 10,000</p>
+    <p><strong>Estimated Cost:</strong> $0.00</p>
+    <p><em>At scale:</em> 1M requests ≈ $5,000</p>
+    <script>
+      let count = 0;
+      function simulateRequests() {
+        const interval = setInterval(() => {
+          if (count >= 10000) return clearInterval(interval);
+          count++;
+          document.getElementById("counter").innerText = `Requests Sent: ${count} / 10,000`;
+        }, 10);
+      }
+    </script>
+  </section>
+
+  <section>
+    <h2>🌍 Scenario 2: Unrestricted Access</h2>
+    <p>This confirms the key is usable from any third-party domain. The map below is rendered using Synology’s key from an external origin.</p>
+    <iframe
+      width="100%"
+      height="400"
+      frameborder="0"
+      style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBXG6lKBSQxQFR48lJ2_v9pzS7MFXu5XNU&q=San+Francisco"
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  <section>
+    <h2>🕵️ Scenario 3: Reconnaissance via Places API</h2>
+    <p>Using the Places API, attackers can enumerate sensitive infrastructure. Below is a real photo preview from a Dhaka location using Synology’s key.</p>
+    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATKogpd3zFeesZFhfJBzrK29U1bGPHH4rwkv9ay9&key=AIzaSyBXG6lKBSQxQFR48lJ2_v9pzS7MFXu5XNU" alt="Dhaka Preview">
+  </section>
+
+  <footer>
+    <hr>
+    <p>⚠️ <strong>Responsible Disclosure Only</strong> — No data exfiltrated. All locations are simulated.</p>
+    <p><strong>Submitted by:</strong> Md. Azmol Haque Rony — Ethical Hacker & Bug Bounty Researcher</p>
+    <p><strong>Timestamp:</strong> August 24, 2025 — Bogura, Bangladesh</p>
+  </footer>
+
+</body>
+</html>
